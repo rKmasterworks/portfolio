@@ -1,0 +1,25 @@
+# macOS & system files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+crash.log
+
+# Node.js (if you ever use it)
+node_modules/
+
+# VS Code / IDEs
+.vscode/
+.idea/
+
+# Logs & temp
+*.log
+*.tmp
