@@ -13,26 +13,33 @@ Git CLI
 _No project this week_
 
 ## 📈 Status
-Started
+Finished
 
 ## 🔗 Resources
 - [Learn Git Branching](https://learngitbranching.js.org)
 
 ## 📝 Notes
-- Git is a version control system used to track code changes and collaborate with others.
-- Useful commands:
-  - `git init` – start a new repo
-  - `git status` – check what’s changed
-  - `git add .` – stage all changes
-  - `git commit -m "msg"` – commit staged changes
-  - `git log` – view commit history
-  - `git branch` – list branches
-  - `git checkout -b new-branch` – create + switch branch
-- Visualization from [learngitbranching.js.org](https://learngitbranching.js.org) is great for mastering branching concepts.
+### Setup
+- `git init` – start repo
+- `git config --global user.name "Your Name"`
+
+### Staging & Committing
+- `git status`
+- `git add .`
+- `git commit -m "message"`
+
+### Branching
+- `git branch` – list branches
+- `git checkout -b new-feature` – create + switch
+- `git merge branchname`
+
+### Reset & Reflog
+- `git reset --soft HEAD~1`
+- `git reflog` – shows past commits even after reset
 
 ## 🤔 Reflections
 - I understand the basic Git flow.
-- Need more practice with merging and resolving conflicts.
+- Need more practice with advancedmerging and resolving conflicts.
 
 ## ✅ Goals for Next Week
 - Learn basic Linux CLI commands and structure.
