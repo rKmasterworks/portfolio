@@ -1,0 +1,11 @@
+<Configuration>
+  <Remove>
+    <Product ID="O365ProPlusRetail" />
+    <Product ID="M365AppsForEnterprise" />
+    <Product ID="Office16ProPlus" />
+    <Product ID="ProPlus2019Retail" />
+    <Product ID="Office365ProPlus" />
+  </Remove>
+  <Display Level="None" AcceptEULA="TRUE" />
+  <Property Name="FORCEAPPSHUTDOWN" Value="TRUE" />
+</Configuration>
