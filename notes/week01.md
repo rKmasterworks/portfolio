@@ -13,7 +13,7 @@ Git CLI
 _No project this week_
 
 ## 📈 Status
-Started
+Completed
 
 ## 🔗 Resources
 - [Learn Git Branching](https://learngitbranching.js.org)
