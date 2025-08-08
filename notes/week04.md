@@ -78,12 +78,15 @@ Brief summary of what cloud computing is and why it's used.
 ---
 
 ## 🗒️ Notes / Reflections
-_Write anything that helped you better understand cloud concepts. Add diagrams, questions, or summaries here._
+- Shared responsibility model: Split responsbility between Cloud Provider and Consumer
+- CapEx is a one-time up-front payment to secure resources (e.g building a datasenter)
+- OpEx is spending money on services over time (e.g leasing, renting)
+- 
 
 ---
 
 ## ✅ Completion Checklist
-- [ ] Watched learning resources
+- [✅ ] Watched learning resources (parts of it)
 - [ ] Took notes
 - [ ] Tried something hands-on (portal, CLI, or sandbox)
 - [ ] Wrote this week’s summary in markdown
