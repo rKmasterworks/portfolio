@@ -81,12 +81,13 @@ Brief summary of what cloud computing is and why it's used.
 - Shared responsibility model: Split responsbility between Cloud Provider and Consumer
 - CapEx is a one-time up-front payment to secure resources (e.g building a datasenter)
 - OpEx is spending money on services over time (e.g leasing, renting)
-- 
+- Get-date, az version, az interactive (version, upgrade) on Powershell CLI
+- date, az upgrade, pwsh in Bash 
 
 ---
 
 ## ✅ Completion Checklist
 - [✅ ] Watched learning resources (parts of it)
-- [ ] Took notes
-- [ ] Tried something hands-on (portal, CLI, or sandbox)
-- [ ] Wrote this week’s summary in markdown
+- [✅] Took notes
+- [✅ ] Tried something hands-on (portal, CLI, or sandbox)
+
