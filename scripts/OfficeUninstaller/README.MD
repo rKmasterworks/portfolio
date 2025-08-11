@@ -41,9 +41,9 @@ OfficeUninstaller/
 
 1. Insert the USB drive and open the `OfficeUninstaller` folder.
 2. Right-click `OfficeUninstall.bat` and choose **Run as administrator**.
-3. Wait for the process to complete — you'll see success messages or prompts.
-4. After uninstallation, proceed with your Office installer (e.g. Microsoft 365 Apps).
-
+3. Copy & Paste "Set-ExecutionPolicy Unrestricted" into powershell.
+4. Wait for the process to complete — you'll see success messages or prompts.
+5. After uninstallation, proceed with your Office installer (e.g. Microsoft 365 Apps).
 ---
 
 ## ⚠️ Important Notes
