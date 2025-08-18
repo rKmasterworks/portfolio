@@ -7,21 +7,20 @@ on:
       - main
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4  
 
-        - name: Checkout code
-          uses: actions/checkout@v4  
+    - name: Build
+      run: echo "Build step placeholder ~ no build needed yet"
+      working-directory: ./projects/azure-portfolio-site
 
-        - name: Build
-          run: echo "Build step placeholder ~ no build needed yet"
-          working-directory: ./projects/azure-portfolio-site
-          
-        - name: Azure Login
-          run: echo "Azure login placeholder ~ will use secret token"
-
-        - name: Deploy
-          run: echo "Deploy placeholder ~ static files will be pushed to Azure"
-          working-directory: ./projects/azure-portfolio-site
+    - name: Deploy to Azure Static Web Apps
+      uses: azure/static-web-apps-deploy@v1
+      with:
+        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEBAPP_TOKEN }}
+        app_location: "./projects/azure-portfolio-site/src"
+        output_location: ""
