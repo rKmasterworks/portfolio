@@ -23,6 +23,4 @@ jobs:
       with:
         azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEBAPP_TOKEN }}
         app_location: "./projects/azure-portfolio-site/src"
-        repo_token: ${{secrets.GITHUB_TOKEN}}
         output_location: ""
-        action: "upload"
