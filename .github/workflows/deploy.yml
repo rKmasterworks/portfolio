@@ -1,0 +1,27 @@
+name: CI/CD Pipeline
+
+# Trigger the workflow on push events to the main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+
+        - name: Checkout code
+          uses: actions/checkout@v4  
+
+        - name: Build
+          run: echo "Build step placeholder ~ no build needed yet"
+          working-directory: ./projects/azure-portfolio-site
+          
+        - name: Azure Login
+          run: echo "Azure login placeholder ~ will use secret token"
+
+        - name: Deploy
+          run: echo "Deploy placeholder ~ static files will be pushed to Azure"
+          working-directory: ./projects/azure-portfolio-site
