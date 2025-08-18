@@ -24,3 +24,4 @@ jobs:
         azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
         app_location: "./projects/azure-portfolio-site/src"
         output_location: ""
+        action: "upload"
