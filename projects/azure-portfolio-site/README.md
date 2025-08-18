@@ -42,7 +42,7 @@ azure-portfolio-site/
 ---
 
 ## 📅 Roadmap
-- [ ] **Phase 1:** Deploy static site manually in Azure.  
+- [✅] **Phase 1:** Deploy static site manually in Azure.  
 - [ ] **Phase 2:** Add GitHub Actions for CI/CD.  
 - [ ] **Phase 3:** Move infra into Terraform configs.  
 - [ ] **Phase 4:** Add monitoring, secrets management, CDN.  
@@ -53,5 +53,22 @@ azure-portfolio-site/
 ## 📖 Notes
 This project is part of my **Cloud Engineering learning path**.  
 I’m starting small, then **iterating step by step** to simulate how real engineers improve infrastructure over time.  
+
+### Hosting Decision
+For the first deployment, I will use **Azure Static Web Apps** instead of Blob Storage.  
+
+**Reasons:**
+- Built-in GitHub Actions support → easier CI/CD setup.  
+- Free SSL and custom domains.  
+- More realistic for a production-style workflow.  
+
+**Future Iteration:**  
+I may also try deploying the same site via **Blob Storage** later to compare simplicity, cost, and flexibility.  
+
+### Deployment Note
+Azure Static Web Apps expects you to specify the folder where your site lives.  
+Since my project is nested under `projects/azure-portfolio-site/src/`, I set this as the **App Location** during setup.  
+This makes sure `index.html` is found correctly.
+
 
 ---
