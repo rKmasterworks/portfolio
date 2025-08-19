@@ -27,3 +27,4 @@ jobs:
           app_location: "projects/azure-portfolio-site/src" # no leading ./, Azure doesn't like it
           output_location: ""
           production_branch: "main"
+          action: "upload"
