@@ -3,9 +3,852 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rKmasterworks</title>
+    <title>Paulius Naudzius - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0078d4;
+            --primary-dark: #106ebe;
+            --secondary: #40e0d0;
+            --azure-blue: #0078d4;
+            --dark: #1a1a1a;
+            --dark-light: #2d2d2d;
+            --dark-lighter: #404040;
+            --gray: #b0b0b0;
+            --light: #2d2d2d;
+            --white: #ffffff;
+            --background: #121212;
+            --card-bg: #1e1e1e;
+            --gradient: linear-gradient(135deg, var(--azure-blue) 0%, var(--secondary) 100%);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--white);
+            overflow-x: hidden;
+            background: var(--background);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 120, 212, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--azure-blue);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.8s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.1s forwards;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--background);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--dark-lighter);
+            border-radius: 25px;
+            color: var(--azure-blue);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--azure-blue);
+        }
+
+        .skill-tag:hover {
+            background: var(--azure-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid var(--dark-lighter);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 120, 212, 0.3);
+            border-color: var(--azure-blue);
+        }
+
+        /* Coming Soon Project Cards */
+        .project-card.coming-soon {
+            position: relative;
+            opacity: 0.35;
+            filter: blur(3px) grayscale(60%);
+            pointer-events: none;
+        }
+
+        .project-card.coming-soon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: #666;
+        }
+        .project-card.coming-soon .project-info {
+            visibility: hidden;
+        }
+        .project-card.coming-soon::after {
+            content: "Coming Soon";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(40, 40, 40, 0.85);
+            color: var(--secondary);
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 2rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            z-index: 2;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .project-image {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .project-info p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            background: var(--azure-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .project-link.disabled {
+            background: #666;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .coming-soon-tag {
+            color: var(--secondary);
+            font-size: 0.8em;
+            font-weight: normal;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--dark-lighter);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item::before {
+            content: '📧';
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-item:nth-child(2)::before {
+            content: '📱';
+        }
+
+        .contact-item:nth-child(3)::before {
+            content: '📍';
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 2px solid var(--dark-lighter);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+            color: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--azure-blue);
+            box-shadow: 0 0 10px rgba(0, 120, 212, 0.3);
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 120, 212, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--azure-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Journey Info Box */
+        .journey-info {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--dark-lighter);
+        }
+
+        .journey-info h3 {
+            color: var(--azure-blue);
+            margin-bottom: 1rem;
+        }
+
+        .journey-info p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-pic {
+                width: 200px;
+                height: 200px;
+                font-size: 3rem;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .profile-img {
+            width: 320px;
+            height: 380px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            top: 40px; /* Pulls the image down by 10 pixels */
+        }
+    </style>
 </head>
 <body>
-    Hello, world!
+    <header>
+        <nav>
+            <div class="logo">Paulius Naudzius</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Paulius Naudzius</h1>
+            <p>Azure Cloud Engineer | Building Scalable Solutions in Microsoft Azure ☁️</p>
+            <a href="#projects" class="cta-button">View My Azure Journey</a>
+        </div>
+    </section>
+
+    <section id="about" class="animate-on-scroll">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm passionate about Microsoft Azure and dedicated to mastering cloud architecture, infrastructure automation, and DevOps practices. Every day I dive deeper into Azure services, exploring new ways to build resilient, scalable, and secure cloud solutions.</p>
+                <p>My journey focuses on understanding Azure's ecosystem - from compute and storage to advanced services like IoT, and serverless computing. I believe Azure is the future of enterprise technology.</p>
+                <div class="skills">
+                    <span class="skill-tag">Microsoft Azure</span>
+                    <span class="skill-tag">Azure DevOps</span>
+                    <span class="skill-tag">ARM Templates</span>
+                    <span class="skill-tag">Terraform</span>
+                    <span class="skill-tag">Azure CLI</span>
+                    <span class="skill-tag">PowerShell</span>
+                    <span class="skill-tag">Azure Functions</span>
+                    <span class="skill-tag">App Services</span>
+                    <span class="skill-tag">Azure SQL</span>
+                    <span class="skill-tag">Storage Accounts</span>
+                    <span class="skill-tag">Virtual Networks</span>
+                    <span class="skill-tag">Azure Monitor</span>
+                </div>
+            </div>
+            <div class="about-image">
+            <div class="profile-pic">
+                <img src="image.jpg" alt="Paulius Naudzius" class="profile-img">
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="animate-on-scroll">
+        <h2 class="section-title">My Azure Projects</h2>
+        <div class="projects-grid">
+            <!-- Active Project -->
+            <div class="project-card">
+                <div class="project-image">📚</div>
+                <div class="project-info">
+                    <h3>Portfolio Library & Documentation</h3>
+                    <p>A growing collection of Azure learning resources, code snippets, and project documentation. This is my knowledge base as I build expertise in Microsoft Azure amongst other solutions.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Library</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Coming Soon Projects -->
+            <div class="project-card coming-soon">
+                <div class="project-image">⚡</div>
+                <div class="project-info">
+                    <h3>Azure App Service Project <span class="coming-soon-tag">(Coming Soon)</span></h3>
+                    <p>Planning to build a scalable web application using Azure App Services with Azure SQL Database and Application Gateway integration.</p>
+                    <div class="project-links">
+                        <span class="project-link disabled">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card coming-soon">
+                <div class="project-image">🛠️</div>
+                <div class="project-info">
+                    <h3>Infrastructure as Code with ARM <span class="coming-soon-tag">(Coming Soon)</span></h3>
+                    <p>Will create automated Azure infrastructure deployment using ARM templates and Bicep, integrated with Azure DevOps pipelines.</p>
+                    <div class="project-links">
+                        <span class="project-link disabled">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card coming-soon">
+                <div class="project-image">📊</div>
+                <div class="project-info">
+                    <h3>Azure Monitor & Analytics <span class="coming-soon-tag">(Coming Soon)</span></h3>
+                    <p>Planning a comprehensive monitoring solution using Azure Monitor, Log Analytics workspaces, and custom dashboards.</p>
+                    <div class="project-links">
+                        <span class="project-link disabled">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card coming-soon">
+                <div class="project-image">🔐</div>
+                <div class="project-info">
+                    <h3>Azure Security Implementation <span class="coming-soon-tag">(Coming Soon)</span></h3>
+                    <p>Will configure Azure Security Center, Key Vault for secrets management, and Azure AD authentication with RBAC policies.</p>
+                    <div class="project-links">
+                        <span class="project-link disabled">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card coming-soon">
+                <div class="project-image">🚀</div>
+                <div class="project-info">
+                    <h3>Serverless with Azure Functions <span class="coming-soon-tag">(Coming Soon)</span></h3>
+                    <p>Planning to build event-driven serverless applications using Azure Functions, Event Grid, and Cosmos DB with automated scaling.</p>
+                    <div class="project-links">
+                        <span class="project-link disabled">Coming Soon</span>
+                    </div>
+                </data>
+            </div>
+        </div>
+        
+        <div class="journey-info">
+            <h3>🚧 Building My Azure Journey</h3>
+            <p>I'm actively working on these projects as part of my Azure learning path. Each project will demonstrate different aspects of cloud engineering and will be updated as I complete them. Follow my progress!</p>
+        </div>
+    </section>
+
+    <section id="contact" class="animate-on-scroll">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Let's Connect!</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--gray);">I'm always excited to discuss cloud technologies, share learning experiences, or collaborate on cloud projects!</p>
+                <div class="contact-item">paulius.naudzius7@gmail.com</div>
+                <div class="contact-item">www.linkedin.com/in/paulius-naudzius-1130aa2b5</div>
+                <div class="contact-item">Available for: Cloud Projects, Mentorship, Networking</div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Share your cloud ideas, projects, or just say hello!" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message ☁️</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+
+        <p>&copy; 2025 Paulius Naudzius. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 26, 26, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 120, 212, 0.2)';
+            } else {
+                header.style.background = 'rgba(26, 26, 26, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form handling
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            // Here you would typically send the data to a server
+            // For now, we'll just show a simple alert
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            this.reset();
+        });
+
+        // Mobile menu toggle (you can expand this functionality)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            // Add mobile menu functionality here if needed
+            console.log('Mobile menu clicked');
+        });
+
+        // Add some interactive hover effects to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('coming-soon')) {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('coming-soon')) {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        });
+
+        // Skill tags interaction
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.style.animation = 'pulse 0.6s ease-in-out';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 600);
+            });
+        });
+
+        // Add CSS for pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
